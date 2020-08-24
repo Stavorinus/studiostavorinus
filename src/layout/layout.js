@@ -7,34 +7,31 @@
 
 import React from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
-
+import { withPrefix } from "gatsby"
 import Header from "./header"
+import {Helmet} from "react-helmet";
 import "./layout.css"
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
   return (
     <>
-      <div
-        style={{
-          margin: `50 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
+      <div>
+        <Header/>
+
+        <progress value="0" id="progressBar"></progress>
+
+
         <main>{children}</main>
       
+
+        <div id="rotate-device"></div>
+        <Helmet>
+          <script src= {withPrefix('../js/jquery.min.js')}></script>
+          <script src= {withPrefix('../js/plugins.js')}></script>
+          <script src= {withPrefix('../js/scripts.js')}></script>
+       </Helmet>
       </div>
+  
     </>
   )
 }
