@@ -19,10 +19,14 @@ const Layout = ({ children }) => {
         <Header/>
 
         <progress value="0" id="progressBar"></progress>
-
+       
+       
+        <div id="page-content">
 
         <main>{children}</main>
-      
+
+
+        </div>
 
         <div id="rotate-device"></div>
         <Helmet>
